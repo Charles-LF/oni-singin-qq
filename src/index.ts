@@ -12,6 +12,7 @@ export const usage = `
 QQ群用的签到打卡,用来学习数据库的使用,仅限QQ群使用,需要有md权限.
 
 更新日志: 
+  - 0.0.2 添加查wiki的按钮
   - 0.0.1 完成主逻辑
 `;
 
@@ -49,7 +50,7 @@ export function apply(ctx: Context, config: Config) {
     if (
       session.content === `<at id="16194082000446472680"/> 来一张托德女装照片`
     ) {
-      session.send("妹拍呢...(");
+      session.send(`来咯,${encodeURI("https://klei.vip:250/托德女装.jpeg")}`);
     }
   });
   ctx.model.extend(
@@ -116,7 +117,9 @@ export function apply(ctx: Context, config: Config) {
               },
               {
                 key: "text4",
-                values: [`冒泡成功思密达,今天,也要多喝热水哟...`],
+                values: [
+                  `<@${session.userId}> 冒泡成功思密达,今天,也要多喝热水哟...`,
+                ],
               },
               {
                 key: "text5",
@@ -175,6 +178,26 @@ export function apply(ctx: Context, config: Config) {
                     },
                   ],
                 },
+                {
+                  buttons: [
+                    {
+                      id: "1",
+                      render_data: {
+                        label: "这是什么? wiki! 查一下",
+                        visited_label: "这是什么? wiki! 查一下",
+                      },
+                      action: {
+                        type: 2,
+                        permission: {
+                          type: 2,
+                        },
+                        unsupport_tips: "兼容文本",
+                        data: "/查wiki",
+                        enter: false,
+                      },
+                    },
+                  ],
+                },
               ],
             },
           },
@@ -216,7 +239,9 @@ export function apply(ctx: Context, config: Config) {
                 },
                 {
                   key: "text4",
-                  values: [`冒泡成功思密达,今天,也要多喝热水哟...`],
+                  values: [
+                    `<@${session.userId}> 冒泡成功思密达,今天,也要多喝热水哟...`,
+                  ],
                 },
                 {
                   key: "text5",
@@ -277,6 +302,26 @@ export function apply(ctx: Context, config: Config) {
                       },
                     ],
                   },
+                  {
+                    buttons: [
+                      {
+                        id: "1",
+                        render_data: {
+                          label: "这是什么? wiki! 查一下",
+                          visited_label: "这是什么? wiki! 查一下",
+                        },
+                        action: {
+                          type: 2,
+                          permission: {
+                            type: 2,
+                          },
+                          unsupport_tips: "兼容文本",
+                          data: "/查wiki",
+                          enter: false,
+                        },
+                      },
+                    ],
+                  },
                 ],
               },
             },
@@ -306,7 +351,7 @@ export function apply(ctx: Context, config: Config) {
                 },
                 {
                   key: "text4",
-                  values: [`今天已经签到过了哟...`],
+                  values: [`<@${session.userId}> 今天已经签到过了哟...`],
                 },
                 {
                   key: "text5",
@@ -361,6 +406,26 @@ export function apply(ctx: Context, config: Config) {
                           unsupport_tips: "兼容文本",
                           data: "来一张托德女装照片",
                           enter: true,
+                        },
+                      },
+                    ],
+                  },
+                  {
+                    buttons: [
+                      {
+                        id: "1",
+                        render_data: {
+                          label: "这是什么? wiki! 查一下",
+                          visited_label: "这是什么? wiki! 查一下",
+                        },
+                        action: {
+                          type: 2,
+                          permission: {
+                            type: 2,
+                          },
+                          unsupport_tips: "兼容文本",
+                          data: "/查wiki",
+                          enter: false,
                         },
                       },
                     ],
